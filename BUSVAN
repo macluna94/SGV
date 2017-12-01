@@ -1,0 +1,22 @@
+ ---------------BUSVAN
+ La application es muy parecida a Uber
+ Pero en este caso es exclusiva para estudiantes
+ O grupos de personas que tengan un mismo destinó
+   Consiste en adquirir un servicio de transporte preparado que te lleva a tu escuelaCunorte.
+   Las diferencias
+   +Solo viajarías con las personas que van al mismo destino. Con esto evitará que el trasporte se pare varias veces en el trayecto
+   Reduciendo el tiempo del viaje
+   +será prepagado mediante pagos con Paypalmercado pago o incluso adquirir tarjetas con viajes preparados
+   Podrías usarlos cuando quieras
+   Un viaje equivale a ida y venida.puedes usar la ida y el regreso cuando quieras*(tiempo de caduacion)
+Mediante la app podrás apartar tu lugar dentro del traslado
+   Trasporte
+   De inicio se pretende crear una estación fija para abordar
+   Pero se concibe la idea de crear una ruta óptima y accesible para la usuarios
+La ruta trataría de estar loas cerca de los usuarios
+   O el usuario fijar un punto de abordaje en la medida de que esté más cerca de su domicilio
+La aplicación te notificará de cualquier cambió con respecto a tu viaje
+    Cambio de hora de ruta  de estación o cambio de chófer
+    La aplicación te mostrará también la información del conductordel transporte y de las personas que aborden
+La reservación del lugar se cerrará 8 hrs antes de comenzar el viaje* o hasta agotar los lugares
+La unidad contará con un GPS para seguir su recorrido y notificarle cuando llegue a la estación
