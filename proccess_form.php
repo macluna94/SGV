@@ -2,7 +2,7 @@
 <html>
 <head>
 </head>
-<body>
+<body> 
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 include "php/connection.php";
@@ -129,7 +129,7 @@ $list_item = "
 	INSERT INTO request_items VALUES(@ID, 5, $estacionamiento);
 	INSERT INTO request_items VALUES(@ID, 6, $estacionometro);";
 
-$log="INSERT INTO `log` VALUES (NULL,1, 1, @ID, $id_user, 0, 'Solicitud creada', NOW());";
+$log="INSERT INTO `log` VALUES (NULL, 1, @ID, $id_user, 0, 'Solicitud creada', NOW());";
 
 
 	
