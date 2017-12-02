@@ -4,15 +4,15 @@
 <head>
 	<title>Login Admin</title>
 <!--  Hoja de estilo interna -->
-	<link rel="stylesheet" href="css/theme_login.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/theme_login.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
 
 <!--  Archivos de jquery y bootstrap externos -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
 <script>
-    
+     
 $(document).ready(function(){
             usuario = $('#username');
             pass = $('#password');
@@ -41,7 +41,7 @@ validate();
         </div>
         <div class="card card-container">
             
-            <img id="profile-img" class="profile-img-card" src="imgs\logo.png" alt="SGV" />
+            <img id="profile-img" class="profile-img-card" src="../imgs\logo.png" alt="SGV" />
             <p id="profile-name" class="profile-name-card"></p>
 
 <!--          Checklogin es la parte que valida los datos ingresados  -->

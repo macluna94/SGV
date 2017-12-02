@@ -1,10 +1,10 @@
 <?php 
-session_start();
- ?>
+	session_start();
+?>
 
 <?php
-
-include "php/connection.php";
+ 
+include "../php/connection.php";
 
 $usuario = $_POST['username'];
 $prepass = $_POST['password'];
@@ -37,7 +37,7 @@ if ($row = mysqli_fetch_row($rows)) {
 	if ($row[3] == $pass) {
 		session_start();
 			$_SESSION['username'] = $usuario;
-			header("Location: principal.php");
+			header("Location: ../principal.php");
 			mysqli_query($connection, "INSERT INTO `log` VALUES (NULL,1, 9, 0, $id, 6, 'Inicio de sesion $id', NOW());");
 	}
 	else{
