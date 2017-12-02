@@ -89,8 +89,8 @@ console.log("Cargada function:\t Tablas Bootstrap3");
 <a href = "login/logout.php" class="btn btn-default" role="button" style="float: right; color: #17a8ff;"  >Cerrar Sesion</a></h2>
       
 <div class="page-header text-center" style="margin-top: 10px;padding-bottom: 0px;margin-bottom: 10px;">
-  <h1>Servicio de Gestion Vehicular <br>
-  <small>Centro Universitario del Norte</small>
+  <h1 style="margin-left: 50px; margin-right: 50px;" >Servicio de Gestion Vehicular <br>
+  <small style="margin-right: 73px;"  >Centro Universitario del Norte</small>
   </h1>
 </div>
 <h5 style="margin-bottom: 0px;" ><b>Bienvenido: </b><span class="label label-success"><?php echo $nombre_pantalla; ?></span></h5>

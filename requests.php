@@ -5,7 +5,7 @@ $filtro = new InputFilter();
 $_POST = $filtro->process($_POST);
 
  ?>
-
+ 
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 	<head>
@@ -166,7 +166,7 @@ $_POST = $filtro->process($_POST);
 		<div class="page-header">
 			<h1>Solicitud<br><small>Sistema de Gestion Vehicular</small></h1>
 		</div>
-		<form name="solicitud" action="process_form.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+		<form name="solicitud" action="proccess_form.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
 			<div class="form-group ">
 				<div class="panel-group">
 
