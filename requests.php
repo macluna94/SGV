@@ -408,9 +408,9 @@ function showPrograms(hub){
 											<th>Capacidad</th>
 										</tr>
 									</thead>
-									<tbody id="addcar">
+									<tbody>
 										<tr>
-											<td></td>
+											<td style="width: 68px;"> <img src="imgs/auto.png" width="32px" height="32px" style="margin-left: 8px;"> </td>
 											<td id="bb"></td>
 											<td id="tb"></td>
 											<td id="pb"></td>
