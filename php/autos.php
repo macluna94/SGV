@@ -53,12 +53,14 @@ if (!$connection) {die('Could not connect: ' . mysqli_error($connection));}
 </thead>
 	<tbody>';
 	while($list = mysqli_fetch_array($result)) {
-		echo "<tr id='tabs'>";
-		echo '<td><input type="hidden" value="'.$list['id'].'" name="auto_id" for="solicitud"  style="width:40px;height:40px" disabled></td>';
-		echo "<td class='text-center' >" . $list['brand_cap'] . "</td>";
-		echo "<td class='text-center' >" . $list['type_cap'] . "</td>";
-		echo "<td class='text-center' >" . $list['passengercapacity'] . "</td>";
-		echo '  <td id="btn-s"><input type="button" onclick="actuar(this)" value="Seleccionar" class="btn btn-info" /></td></tr>';
+		echo '<tr id="tabs">
+
+		<td><input type="hidden" value="'.$list['id'].'" id="s_car"></td>
+		<td class="text-center"  id="b'.$list['id'].'"  >' . $list["brand_cap"] . '</td>
+		<td class="text-center"  id="t'.$list['id'].'"  >' . $list["type_cap"] . '</td>
+		<td class="text-center"  id="p'.$list['id'].'"  >' . $list["passengercapacity"] . '</td>
+		<td><button type="button" class="btn btn-success"  value="'.$list['id'].'" onclick="auto(this);"  data-dismiss="modal" >Seleccionar</button></td>
+		</tr>';
 	}
 	echo "</tbody></table>
 

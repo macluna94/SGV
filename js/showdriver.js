@@ -2,7 +2,7 @@
 var date_salida,date_retorno;
 var time_salida, time_retorno;
 
-console.log("Cargada funcion: \t Leer showDriver()");
+//console.log("Cargada funcion: \t Leer showDriver()");
  
 		function showDriver(date_salida, date_retorno, time_salida, time_retorno) {
 			if ((date_retorno == "") && (date_salida = "") && (time_salida == "") && (time_retorno == "") ) {

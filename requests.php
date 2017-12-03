@@ -71,36 +71,47 @@ $_POST = $filtro->process($_POST);
 			include "php/settings_date.php";
 
 		?>
-<script>
-					function deletecar() {
-					$("#delete_auto").click(function(){
-						$("#car").remove();
-					});
-					console.log("Auto borrado");
-				}
-			function actuar(this){
-				var v1 = $(this).parents("tr").find("td")[0].innerHTML;
-				var v2 = $(this).parents("tr").find("td")[1].innerHTML;
-				var v3 = $(this).parents("tr").find("td")[2].innerHTML;
-				var v4 = $(this).parents("tr").find("td")[3].innerHTML;
-				$("#addcar").append("<tr id='car'><td>"+v1+"</td><td>"+v2+"</td><td>"+v3+"</td><td>"+v4+"</td> <td style='width: 80px;padding-left: 20px;'><button type='button' id='delete_auto' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
-				deletecar();
-				console.log(v1+" "+v2+" "+v3+" "+v4);
-			}
-</script>
+
+
 
 		<script id="car_function">
 			$(document).ready(function(){
-			console.log("Cargada funcion: \t Agregar Transporte()");
-			console.log("Cargada funcion: \t Agregar Transporte(delete)");
+			//console.log("Cargada funcion: \t Agregar Transporte()");
+			//console.log("Cargada funcion: \t Agregar Transporte(delete)");
+			
 			});
 		</script>
 
 
+<script ="select_auto">
+	$(document).ready(function(){
+		console.log("auto"+"motriz");
+	});
+	function auto(val){
+			var val;
+			var id_car =$(val).val();
+			
+			var marca = $("td[id=b" + id_car +"]").text();
+			var modelo = $("td[id=t" + id_car +"]").text();
+			var pasajeros = $("td[id=p" + id_car +"]").text();
+
+			console.log(id_car);
+			console.log(marca);
+			console.log(modelo);
+			console.log(pasajeros);
+
+			$("#bb").text(marca);
+			$("#tb").text(modelo);
+			$("#pb").text(pasajeros);
+			$("#transporte").val(id_car);
+
+	}
+</script>
+
 
 		<script type="text/javascript" id="asistentes_function">
 			$(document).ready(function(){
-				console.log("Cargada funcion: \t Agregar Asistentes()");
+				//console.log("Cargada funcion: \t Agregar Asistentes()");
 
 				$("#agreg_asist").click(function(){
 				var vvv = $("#name").val();
@@ -112,7 +123,7 @@ $_POST = $filtro->process($_POST);
 				console.log("add_name");
 
 				$("#list_asist").append("<tr><td id='name' >" + $("#name").val()+ "</td>"+"<td id='code'>" + $("#code").val() + "</td><td aling='center' style='width: 80px;padding-left: 20px;'><button type='button' class='btn btn-danger btn-sm' onclick='borrarAsist(this);'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
-				console.log("Agregado: "+$("#name").val()+ " "+$("#code").val());
+				//console.log("Agregado: "+$("#name").val()+ " "+$("#code").val());
 
 
 
@@ -120,7 +131,7 @@ $_POST = $filtro->process($_POST);
 				$("#code").val("");
 				}
 				else{
-				console.log("Campos nombre  y codigo 'Vacio'");
+				//console.log("Campos nombre  y codigo 'Vacio'");
 				}
 
 				});
@@ -129,7 +140,7 @@ $_POST = $filtro->process($_POST);
 				});
 
 				function borrarAsist(str) {
-				console.log("borrar_asistente");
+				//console.log("borrar_asistente");
 
 				var j = str.parentNode.parentNode.rowIndex;
 				document.getElementById("list_asist").deleteRow(j-1);
@@ -140,24 +151,29 @@ $_POST = $filtro->process($_POST);
 			$(document).ready(function(){
 
 
-			console.log("Cargada funcion: \t Agregar Gastos()");
+			//console.log("Cargada funcion: \t Agregar Gastos()");
 			$("#expense_add").click(function(){
-			console.log("gastos");
+			//console.log("gastos");
 			$("#list_expense").append("<tr><td id='concepto'>"+$("select[name=concepto]").val()+"</td><td id='cantidad'>" + "$ " + $("input[name=cantidad]").val()+"</td><td aling='center' style='width: 80px;padding-left: 20px;'><button type='button' class='btn btn-danger btn-sm' onclick='borrarGasto(this);'><span class='glyphicon glyphicon-remove'></span></button></td></tr></tr>");
 
 			//var concepto = $("select[name=concepto]").val();
 			//var cantidad = $("input[name=cantidad]").val();
-			console.log(concepto + "   "+ cantidad);
+			//console.log(concepto + "   "+ cantidad);
 			$("input[name=cantidad]").val("");
 			});
 			});
 			function borrarGasto(jdr) {
-			console.log("borrar_gasto");
+			//console.log("borrar_gasto");
 
 			var i = jdr.parentNode.parentNode.rowIndex;
 			document.getElementById("list_expense").deleteRow(i-1);
 			}
 		</script>
+
+
+
+
+
 
 
 	</head>
@@ -375,12 +391,13 @@ function showPrograms(hub){
 										<br>
 							
 									
-							<button type="button" data-toggle="modal" class="btn btn-success"  data-target="#myModal">
+							<button  type="button" data-toggle="modal" class="btn btn-success"  data-target="#myModal"  value="MacLuna" >
 								<span class="glyphicon glyphicon-road"></span>   Seleccionar
+
 							</button>
 									</div>
 								</div>
-	
+	<input id="transporte" type="hidden" name="transporte" value="" required>
 							<div class="panel-body">
 								<table class="table table-bordered">
 									<thead>
@@ -389,10 +406,15 @@ function showPrograms(hub){
 											<th>Marca</th>
 											<th>Tipo</th>
 											<th>Capacidad</th>
-											<th></th>
 										</tr>
 									</thead>
 									<tbody id="addcar">
+										<tr>
+											<td></td>
+											<td id="bb"></td>
+											<td id="tb"></td>
+											<td id="pb"></td>
+										</tr>
 									</tbody>
 								</table>
 								<div class="form-group row">
@@ -457,12 +479,8 @@ function showPrograms(hub){
 								</div>
 							</div>
 							<div>
-								<input id="codigos" type="hidden" name="codigos" value="">
-								<input id="nombres" type="hidden" name="nombres" value="">
-								<input type="hidden" name="conceptos" id="conceptos">
-								<input type="hidden" name="cantidades" id="cantidades">
 
-								<input id="transporte" type="hidden" name="transporte" value="" required>
+								
 								<input id="id_user" type="hidden" name="id_user" value="<?php echo $id; ?>">
 							</div>
 							<div class="table-responsive">
@@ -532,12 +550,11 @@ function showPrograms(hub){
 </div>
 
 <script>
-	console.log("Cargada funcion: \t mio()");
+	//console.log("Cargada funcion: \t mio()");
 
 	function mio(){
 	var valores="";
 	var codigos="";
-	var auto = $("input[name=auto_id]").val();
 	var items = "";
 	var costs = "";
 
@@ -573,13 +590,12 @@ function showPrograms(hub){
 	a_codigos.push(codigos);
 	$("#codigos").val(codigos);
 	$("#nombres").val(valores);
-	$("#transporte").val(auto);
-	console.log("Funcion mio() \t Ejecutada");
 
+/*	console.log("Funcion mio() \t Ejecutada");
 	console.log("Id auto: "+ auto);
 	console.log("Nombre:"+asistentes+" Codigo: "+ a_codigos);
 	console.log("Conceptos:" + list_items + " Codigo: "+ list_costs);
-
+*/
 	}
 
 	var asistentes = new Array();
@@ -626,11 +642,10 @@ function showPrograms(hub){
 					<div class="table-responsive" id="lista_autos">
 
 
-
-
-
-
 					</div>
+
+
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
