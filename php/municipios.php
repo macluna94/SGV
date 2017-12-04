@@ -13,8 +13,9 @@ $sql_mp = "SELECT id, `name` FROM municipalities WHERE state = ".$estado." ORDER
 
 $result = mysqli_query($connection, $sql_mp);
 
-echo '<label for="solicitud">Municipio:</label> <select name="municipio" class="form-control" >
-<option selected disabled style="display: none;">Seleccione el municipio</option>
+echo '<label for="solicitud">Municipio:</label>
+<select name="municipio" class="form-control" required>
+<option></option>
 ';
 
 while ($d = mysqli_fetch_array($result)) {

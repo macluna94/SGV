@@ -12,7 +12,7 @@ echo '
 	<div class="form-group">
 		<label for="sel1">Programa:</label>
 			<select name = "programa" class="form-control" required>
-				<option selected disabled style="display: none;">Seleccione el area</option>
+				<option></option>
 						';
 
 while ($x = $query_programs->fetch_array()) {

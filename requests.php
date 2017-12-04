@@ -151,7 +151,7 @@ $_POST = $filtro->process($_POST);
 		<div class="page-header">
 			<h1>Solicitud<br><small>Sistema de Gestion Vehicular</small></h1>
 		</div>
-		<form name="solicitud" action="proccess_form.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+		<form name="solicitud" action="#" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
 			<div class="form-group ">
 				<div class="panel-group">
 
@@ -177,17 +177,18 @@ $_POST = $filtro->process($_POST);
 <div class="form-group row">
 <div class="col-xs-4">
 	<label class="control-label">Lugar de destino o arribo</label>
-		<input  type="text" for="solicitud" name="evento" pattern="[A-Z-a-z-' ']+" class="form-control" required placeholder="Lugar del evento">
+		<input  type="text" for="solicitud" name="evento"  class="form-control" required placeholder="Lugar del evento">
 </div>
 
 <div class="col-xs-4">
 	<div class="form-group">
 		<label class="control-label">Estado</label>
-			<select name="estados" id="estados" for="solicitud" class="form-control" onchange="showState(this.value);" >
-
-				<?php echo '<option selected disabled style="display: none;">Seleccione el estado</option>'.$option_state; ?>
+			<select required="true"  name="estados" id="estados" for="solicitud" class="form-control" onchange="showState(this.value);" >
+				<option></option>
+				<?php echo $option_state; ?>
 			</select>
 	</div>
+
 		<script>
 			function showState(str) {
 			if (str == "") {
@@ -222,8 +223,7 @@ $_POST = $filtro->process($_POST);
 		<div id="mncp">										
 			<label for="solicitud">Municipio:</label>
 				<select name="conductor" class="form-control" >
-					<option value="" selected="" disabled="">
-						Selecciona el estado
+					<option>
 					</option>
 				</select>
 		</div>
@@ -285,7 +285,7 @@ function showPrograms(hub){
 
 		<label for="sel2">Ejes:</label>
 			<select  name="labor" class="form-control" onchange="showPrograms(this.value);sub_docs(this.value);" required>
-				<option selected disabled style="display: none;">Seleccione el eje</option>
+				<option></option>
 				<?php echo $options_hubs; ?>
 			</select>
 	</div>
@@ -359,15 +359,16 @@ function showPrograms(hub){
 										<h4><strong>Transporte</strong></h4>
 										<br>
 							
-									
-							<button  type="button" data-toggle="modal" class="btn btn-success"  data-target="#myModal"  value="MacLuna" >
-								<span class="glyphicon glyphicon-road"></span>   Seleccionar
-
-							</button>
 									</div>
 								</div>
 	<input id="transporte" type="hidden" name="transporte" value="" required>
+									
 							<div class="panel-body">
+							<button  type="button" id="start" data-toggle="modal" class="btn btn-success"  data-target="#myModal"  value="MacLuna" >
+								<span class="glyphicon glyphicon-road"></span>   Seleccionar
+							</button>
+							<br>
+							<br>
 								<table class="table table-bordered">
 									<thead>
 										<tr class="info">
@@ -380,9 +381,9 @@ function showPrograms(hub){
 									<tbody>
 										<tr>
 											<td style="width: 68px;"> <img src="imgs/auto.png" width="32px" height="32px" style="margin-left: 8px;"> </td>
-											<td id="bb"></td>
-											<td id="tb"></td>
-											<td id="pb"></td>
+											<td id="bb" style="text-align: center;" ></td>
+											<td id="tb" style="text-align: center;" ></td>
+											<td id="pb" style="text-align: center;" ></td>
 										</tr>
 									</tbody>
 								</table>
@@ -392,7 +393,7 @@ function showPrograms(hub){
 											<label for="sel1">Conductor: </label>
 												<select name="conductor" class="form-control"  required>
 													
-												<option disabled selected>Seleccione conductor</option>
+												<option></option>
 												</select>
 										</div>
 									</div>
@@ -400,8 +401,8 @@ function showPrograms(hub){
 										<div class="form-group">
 											<label for="sel1">Responsable:</label>
 												<select name = "responsable" class="form-control" required>
-
-													<?php echo '<option selected disabled style="display: none;">Seleccione el responsable</option>'.$options_responsable; ?>
+<option></option>
+													<?php echo $options_responsable; ?>
 												</select>
 										</div>
 									</div>
@@ -518,6 +519,11 @@ function showPrograms(hub){
 </div>
 </div>
 
+
+
+
+
+
 <script>
 	console.log("Cargada funcion: \t mio()");
 
@@ -566,7 +572,7 @@ console.log("Funcion mio() \t Ejecutada");
 							<div class="col-xs-2"></div>
 							<div class="col-xs-2"></div><div class="col-xs-2"></div>
 							<div class="col-xs-2">
-								<button type="submit" class="btn btn-success"  onclick="mio()">Enviar Solicitud</button>
+								<button type="submit" id="enviar" class="btn btn-success" disabled="true" onclick="mio()" >Enviar Solicitud</button>
 							</div>
 							
 						</div>
@@ -577,7 +583,16 @@ console.log("Funcion mio() \t Ejecutada");
 	</div>
 
 
-	<!-- Modal -->
+<script>
+	var state = false;
+	$("button[id=start]").click(function() {
+		state = true;
+		$("button[id=enviar]").attr("disabled", false);
+	})
+</script>
+
+
+<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 		<!-- Modal content-->

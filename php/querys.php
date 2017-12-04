@@ -7,7 +7,6 @@ include "php/connection.php";
 
     $options_hubs="";
     	$query_hubs = $connection->query("SELECT id, caption FROM hubs");
-    	$hubs = '<option value="0"> Elige una marca</option>';
     	while($fila = $query_hubs->fetch_array()){
     	$options_hubs.='<option value="'.$fila["id"].'">'.$fila["caption"].'</option>';
     	}
