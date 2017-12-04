@@ -9,9 +9,7 @@
     <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="js\bootstrap.min.js"></script>
 
-<script>
-  alert("Solicitud creada");
-</script>
+
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 
 
