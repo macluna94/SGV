@@ -499,7 +499,7 @@
 		var a_codigos = new Array();
 	</script>
 
-<!-- Modal -->
+	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 		<!-- Modal content-->
@@ -521,5 +521,5 @@
 		</div>
 	</div>
 
-</body>
+	</body>
 </html>
