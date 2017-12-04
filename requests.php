@@ -236,7 +236,7 @@ $_POST = $filtro->process($_POST);
 	<div class="form-group">
 <script>
 	$(document).ready(function(){
-$("#pdf").hide();
+				$("#pdf").hide();
     			$("#xml").hide();
 	});
 </script>
@@ -268,17 +268,24 @@ function showPrograms(hub){
     		if (hub == 1) {
     			$("#pdf").show();
     			$("#xml").show();
-
+$("input[id=file-pdf]").attr("required", true);
+$("input[id=file-xml]").attr("required", true);
     		}
     		else if (hub == 3) {
     			$("#pdf").show();
+    			$("input[id=file-pdf]").attr("required", true);
+    			$("input[id=file-xml]").attr("required", false);
     		}
     		else if(hub == 6){
 				$("#xml").show();
+				$("input[id=file-xml]").attr("required", true);
+				$("input[id=file-pdf]").attr("required", false);
     		}
     		else{
     			$("#pdf").hide();
     			$("#xml").hide();
+    			$("input[id=file-pdf]").attr("required", false);
+				$("input[id=file-xml]").attr("required", false);
     		}
     	}
 </script>
@@ -504,13 +511,13 @@ function showPrograms(hub){
 				<div id="pdf">
 					<div class="col-xs-6">
 						<label class="label-control">Subir PDF</label>
-						<input id="file-pdf" name="file-pdf" multiple type="file" >
+						<input id="file-pdf" name="file-pdf" multiple type="file" required="false">
 					</div>
 				</div>
 				<div id="xml">
 					<div class="col-xs-6">
 						<label class="label-control">Subir XML</label>
-						<input id="file-xml" name="file-xml" multiple type="file" >
+						<input id="file-xml" name="file-xml" multiple type="file" required="false">
 					</div>
 				</div>
 			</div>
@@ -520,9 +527,19 @@ function showPrograms(hub){
 </div>
 
 
+<script>
+	
 
 
+</script>
 
+<script>
+	var state = false;
+	$("button[id=start]").click(function() {
+		state = true;
+		$("button[id=enviar]").attr("disabled", false);
+	})
+</script>
 
 <script>
 	console.log("Cargada funcion: \t mio()");
@@ -545,7 +562,7 @@ function showPrograms(hub){
 	$("#codigos").val(codigos);
 	$("#nombres").val(valores);
 
-console.log("Funcion mio() \t Ejecutada");
+	console.log("Funcion mio() \t Ejecutada");
 	console.log("Nombre:"+asistentes+" Codigo: "+ a_codigos);
 
 
@@ -583,13 +600,7 @@ console.log("Funcion mio() \t Ejecutada");
 	</div>
 
 
-<script>
-	var state = false;
-	$("button[id=start]").click(function() {
-		state = true;
-		$("button[id=enviar]").attr("disabled", false);
-	})
-</script>
+
 
 
 <!-- Modal -->
