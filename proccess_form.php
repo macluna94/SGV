@@ -68,9 +68,9 @@ $codigos = str_replace($xss, '', $codigos);
 $driver_asing = 'FALSE';
 $auth = 'FALSE';
 
-$nombre = explode("\n",$asistentes);
+$nombre = explode("_",$asistentes);
 $j = count($nombre);
-$codigo = explode("\n",$codigos);
+$codigo = explode("_",$codigos);
 $list = "";
 
 $xml_query = "";$pdf_query = "";
@@ -111,15 +111,9 @@ $pre_query = "INSERT INTO requests VALUES (NULL,'$motivo','$evento', $municipio,
 	$i_query = "SET @ID = LAST_INSERT_ID();";
 
 for ($c=0; $c < $j-1; $c++) {
-	$list .= "INSERT INTO request_passengers VALUES (@ID, '$nombre[$c]', '$codigo[$c]');";
+	$list .= "INSERT INTO request_passengers VALUES (@ID, '$nombre[$c]', '$codigo[$c]');\n";
 }
-/*
-for ($i=0; $i < $jj-1; $i++) { 
-	$costoo = $costo[$i];
-$cost = substr($costoo, 1);
-	$list_item .= "INSERT INTO request_items VALUES(@ID, $concepto[$i], $cost);";
-}
-*/
+
 
 $list_item = "
 	INSERT INTO request_items VALUES(@ID, 1, $hospedaje);
@@ -177,11 +171,11 @@ $pre = $pre_query.$i_query.$log;
 $todo = $pre_query.$i_query.$log.$list.$list_item.$files; 
 
 
-echo $todo;
+
+echo "<br>",$list;
 
 
-
-
+/*
 $link = new mysqli('localhost','root','','autos');
 
 	if ($link->connect_error){die("Connection failed: ".$link->connect_error);}
@@ -196,7 +190,7 @@ $link = new mysqli('localhost','root','','autos');
 	}
 
 	$link->close();
-
+*/
 ?>
 </body>
 </html>

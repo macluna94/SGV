@@ -111,27 +111,24 @@ $_POST = $filtro->process($_POST);
 
 		<script type="text/javascript" id="asistentes_function">
 			$(document).ready(function(){
-				//console.log("Cargada funcion: \t Agregar Asistentes()");
+				console.log("Cargada funcion: \t Agregar Asistentes()");
 
 				$("#agreg_asist").click(function(){
 				var vvv = $("#name").val();
 				var www = $("#code").val();
 
-
-
 				if (vvv != "" && www != "") {
 				console.log("add_name");
 
 				$("#list_asist").append("<tr><td id='name' >" + $("#name").val()+ "</td>"+"<td id='code'>" + $("#code").val() + "</td><td aling='center' style='width: 80px;padding-left: 20px;'><button type='button' class='btn btn-danger btn-sm' onclick='borrarAsist(this);'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
-				//console.log("Agregado: "+$("#name").val()+ " "+$("#code").val());
-
-
+				
+				console.log("Agregado: "+$("#name").val()+ " "+$("#code").val());
 
 				$("#name").val("");
 				$("#code").val("");
 				}
 				else{
-				//console.log("Campos nombre  y codigo 'Vacio'");
+				console.log("Campos nombre  y codigo 'Vacio'");
 				}
 
 				});
@@ -146,34 +143,6 @@ $_POST = $filtro->process($_POST);
 				document.getElementById("list_asist").deleteRow(j-1);
 			}
 		</script>
-
-		<script id="gastos_function">
-			$(document).ready(function(){
-
-
-			//console.log("Cargada funcion: \t Agregar Gastos()");
-			$("#expense_add").click(function(){
-			//console.log("gastos");
-			$("#list_expense").append("<tr><td id='concepto'>"+$("select[name=concepto]").val()+"</td><td id='cantidad'>" + "$ " + $("input[name=cantidad]").val()+"</td><td aling='center' style='width: 80px;padding-left: 20px;'><button type='button' class='btn btn-danger btn-sm' onclick='borrarGasto(this);'><span class='glyphicon glyphicon-remove'></span></button></td></tr></tr>");
-
-			//var concepto = $("select[name=concepto]").val();
-			//var cantidad = $("input[name=cantidad]").val();
-			//console.log(concepto + "   "+ cantidad);
-			$("input[name=cantidad]").val("");
-			});
-			});
-			function borrarGasto(jdr) {
-			//console.log("borrar_gasto");
-
-			var i = jdr.parentNode.parentNode.rowIndex;
-			document.getElementById("list_expense").deleteRow(i-1);
-			}
-		</script>
-
-
-
-
-
 
 
 	</head>
@@ -550,59 +519,40 @@ function showPrograms(hub){
 </div>
 
 <script>
-	//console.log("Cargada funcion: \t mio()");
+	console.log("Cargada funcion: \t mio()");
 
 	function mio(){
 	var valores="";
 	var codigos="";
-	var items = "";
-	var costs = "";
 
-	$("td").parents("tr").find("#concepto").each(function(){
-	items += $(this).html()+"\n";
-	});
-	$("td").parents("tr").find("#cantidad").each(function(){
-	costs += $(this).html()+"\n";
-	});
 
 	$("td").parents("tr").find("#name").each(function(){
-	valores+=$(this).html()+"\n";
+	valores+=$(this).html()+"_";
 	});
 
 	$("td").parents("tr").find("#code").each(function(){
-	codigos+=$(this).html()+"\n";
+	codigos+=$(this).html()+"_";
 	});
-
-	var nombre = $("#name").val();
-	var apellido = $("#code").val();
-
-	var l_items = $("#concepto").val();
-	var l_costs = $("#cantidad").val();
-
-
-	list_items.push(items);
-	list_costs.push(costs);
-	$("#conceptos").val(items);
-	$("#cantidades").val(costs);
-
 
 	asistentes.push(valores);
 	a_codigos.push(codigos);
 	$("#codigos").val(codigos);
 	$("#nombres").val(valores);
 
-/*	console.log("Funcion mio() \t Ejecutada");
-	console.log("Id auto: "+ auto);
+console.log("Funcion mio() \t Ejecutada");
 	console.log("Nombre:"+asistentes+" Codigo: "+ a_codigos);
-	console.log("Conceptos:" + list_items + " Codigo: "+ list_costs);
-*/
+
+
 	}
 
 	var asistentes = new Array();
 	var a_codigos = new Array();
-	var list_items = new Array();
-	var list_costs = new Array();
 </script>
+
+<input type="hidden" id="nombres" name="nombres"  >
+<input type="hidden" id="codigos" name="codigos"  >
+
+
 
 
 					<div class="panel-footer">
