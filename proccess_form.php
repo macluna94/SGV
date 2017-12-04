@@ -175,7 +175,7 @@ $todo = $pre_query.$i_query.$log.$list.$list_item.$files;
 echo "<br>",$list;
 
 
-/*
+
 $link = new mysqli('localhost','root','','autos');
 
 	if ($link->connect_error){die("Connection failed: ".$link->connect_error);}
@@ -183,14 +183,14 @@ $link = new mysqli('localhost','root','','autos');
 	if ($link->multi_query($todo) == TRUE  ) {
 		$link->query($log);
 		header("Location: principal.php?id=$id_user"); 
-	    echo "<br><br>  New record created successfully";
+	    echo "<script>alert('Solicitud creada');</script>";
 	} else {
 	    echo "Error: " . "<br>" . $link->error;
 	    $link->query("rollback;");
 	}
 
 	$link->close();
-*/
+
 ?>
 </body>
 </html>
