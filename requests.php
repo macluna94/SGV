@@ -1,10 +1,9 @@
 <?php 
-require_once 'class.inputfilter.php';
-include "session.php";
-$filtro = new InputFilter();
-$_POST = $filtro->process($_POST);
-
- ?>
+	require_once 'class.inputfilter.php';
+	include "session.php";
+	$filtro = new InputFilter();
+	$_POST = $filtro->process($_POST);
+?>
  
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -16,44 +15,37 @@ $_POST = $filtro->process($_POST);
 
 		<link rel="stylesheet" href="css\bootstrap.min.css">
 		<link rel="stylesheet" href="css\datatables.css">
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" > </script> 
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" > </script> 
 		<script src="js\bootstrap.min.js"></script>
 		<script src="js\showdriver.js"></script>
 		<script src="js\showcar.js"></script>
 		<script src="js\list_names.js"></script>
-		
-<link href="fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" > </script> 
-<script src="fileinput/js/fileinput.min.js" > </script> 
-<script src="fileinput/js/locales/es.js" > </script> 
+		<link href="fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />     
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" > </script> 
+		<script src="fileinput/js/fileinput.min.js" > </script> 
+		<script src="fileinput/js/locales/es.js" > </script> 
 
-	<script>
-						$(document).ready(function(){
-							$("#file-pdf").fileinput({
-								"language": 'es',
-								"required": false,
-								"showRemove": true,
-								"showUpload": false,
-								'allowedFileExtensions': ['pdf'],
-								"maxFileSize": 5000
-							});
-							$("#file-xml").fileinput({
-								"language": 'es',
-								"required": false,
-								"showRemove": true,
-								"showUpload": false,
-								'allowedFileExtensions': ['xml']
-							});
-						});
-					</script>
+		<script>
+			$(document).ready(function(){
+				$("#file-pdf").fileinput({
+					"language": 'es',
+					"required": false,
+					"showRemove": true,
+					"showUpload": false,
+					'allowedFileExtensions': ['pdf'],
+					"maxFileSize": 5000
+				});
+				$("#file-xml").fileinput({
+					"language": 'es',
+					"required": false,
+					"showRemove": true,
+					"showUpload": false,
+					'allowedFileExtensions': ['xml']
+				});
+			});
+		</script>
 
-
-
-
-
-
-
-		<style type="text/css">
+		<style type="css">
 			.modal-header{
 				background-color: #1565d3;
 				color:white !important;
@@ -65,86 +57,42 @@ $_POST = $filtro->process($_POST);
 			header('Content-Type: text/html; charset=UTF-8');
 			include "php/connection.php";
 			$id = $id_user;
-
-
 			include "php/querys.php";
 			include "php/settings_date.php";
-
 		?>
 
-
-
-		<script id="car_function">
-			$(document).ready(function(){
-			//console.log("Cargada funcion: \t Agregar Transporte()");
-			//console.log("Cargada funcion: \t Agregar Transporte(delete)");
-			
-			});
+		<script ="select_auto">
+			function auto(val){
+					var val;
+					var id_car =$(val).val();
+					var marca = $("td[id=b" + id_car +"]").text();
+					var modelo = $("td[id=t" + id_car +"]").text();
+					var pasajeros = $("td[id=p" + id_car +"]").text();
+					$("#bb").text(marca);
+					$("#tb").text(modelo);
+					$("#pb").text(pasajeros);
+					$("#transporte").val(id_car);
+			}
 		</script>
-
-
-<script ="select_auto">
-	$(document).ready(function(){
-		console.log("auto"+"motriz");
-	});
-	function auto(val){
-			var val;
-			var id_car =$(val).val();
-			
-			var marca = $("td[id=b" + id_car +"]").text();
-			var modelo = $("td[id=t" + id_car +"]").text();
-			var pasajeros = $("td[id=p" + id_car +"]").text();
-
-			console.log(id_car);
-			console.log(marca);
-			console.log(modelo);
-			console.log(pasajeros);
-
-			$("#bb").text(marca);
-			$("#tb").text(modelo);
-			$("#pb").text(pasajeros);
-			$("#transporte").val(id_car);
-
-	}
-</script>
-
-
 		<script type="text/javascript" id="asistentes_function">
 			$(document).ready(function(){
-				console.log("Cargada funcion: \t Agregar Asistentes()");
-
 				$("#agreg_asist").click(function(){
-				var vvv = $("#name").val();
-				var www = $("#code").val();
+					var vvv = $("#name").val();
+					var www = $("#code").val();
 
-				if (vvv != "" && www != "") {
-				console.log("add_name");
-
-				$("#list_asist").append("<tr><td id='name' >" + $("#name").val()+ "</td>"+"<td id='code'>" + $("#code").val() + "</td><td aling='center' style='width: 80px;padding-left: 20px;'><button type='button' class='btn btn-danger btn-sm' onclick='borrarAsist(this);'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
-				
-				console.log("Agregado: "+$("#name").val()+ " "+$("#code").val());
-
-				$("#name").val("");
-				$("#code").val("");
-				}
-				else{
-				console.log("Campos nombre  y codigo 'Vacio'");
-				}
-
+					if (vvv != "" && www != "") {
+						$("#list_asist").append("<tr><td id='name' >" + $("#name").val()+ "</td>"+"<td id='code'>" + $("#code").val() + "</td><td aling='center' style='width: 80px;padding-left: 20px;'><button type='button' class='btn btn-danger btn-sm' onclick='borrarAsist(this);'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
+						$("#name").val("");
+						$("#code").val("");
+					}
+					else{}
 				});
-
-
-				});
-
-				function borrarAsist(str) {
-				//console.log("borrar_asistente");
-
+			});
+			function borrarAsist(str) {
 				var j = str.parentNode.parentNode.rowIndex;
 				document.getElementById("list_asist").deleteRow(j-1);
 			}
 		</script>
-
-
 	</head>
 <body>
 	<div class="container">
