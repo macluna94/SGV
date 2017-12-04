@@ -98,7 +98,7 @@
 		<div class="page-header">
 			<h1>Solicitud<br><small>Sistema de Gestion Vehicular</small></h1>
 		</div>
-		<form name="solicitud" action="#" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+		<form name="solicitud" action="proccess_form.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
 			<div class="form-group ">
 				<div class="panel-group">
 

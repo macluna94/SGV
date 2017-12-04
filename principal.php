@@ -15,7 +15,7 @@
 
 <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" charset="utf-8" async defer></script>
-
+ 
     <script src="js\block_btns.js"></script>
 
 <script type="text/javascript">
@@ -458,7 +458,7 @@ function data_modal_accept(str){
         </div>
         <div class="modal-footer">
           <div class="col-xs-5">
-            <button type="button" class="btn btn-success" id="b_accept"  value="" onclick="accept_n(this.value);" data-dismiss="modal">Aceptar</button>
+            <button type="button" class="btn btn-success" id="b_accept"  value="" onclick="accept_n(this.value);javascript:location.reload()" data-dismiss="modal">Aceptar</button>
           </div>
           <div class="col-xs-1"></div>
           <div class="col-xs-5">
