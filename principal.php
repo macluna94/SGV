@@ -141,9 +141,9 @@ console.log("Cargada function:\t Tablas Bootstrap3");
             if (isset($aprobar)) {
                 echo '  <td class="text-center" style="width: 65px;"><div class="btn-group btn-group-xs"  style="margin: 13px;">
 
-                      <button type="button" value="'.$row['id'].'" name="aceptar"  onclick="data_modal_accept(this.value)" class="btn btn-success" ><span class="glyphicon glyphicon-ok"></button>
+    <button type="button" value="'.$row['id'].'" name="aceptar"  onclick="data_modal_accept(this.value)" class="btn btn-success" ><span class="glyphicon glyphicon-ok"></button>
 
-                <button type="button" value="'.$row['id'].'" name="negar"  onclick="denegWin(this.value);" class="btn btn-danger" ><span class="glyphicon glyphicon-remove"></button></div></td>';
+    <button type="button" value="'.$row['id'].'" name="negar"  onclick="" class="btn btn-danger" ><span class="glyphicon glyphicon-remove"></button></div></td>';
             }
         }
 
@@ -372,18 +372,31 @@ console.log("Cargada function:\t Tablas Bootstrap3");
         }
 
 
-function data_modal_accept(str){
-  console.log("Valor: " + str);
-            $("button[id=b_accept]").val(str);
-            console.log("Valor "+str+" asignado al boton aceptar(modal[aceptar])");
-            $("#aceptar").modal("toggle");
-}
+  function data_modal_accept(str){
+    console.log("Valor: " + str);
+    $("button[id=b_accept]").val(str);
+    console.log("Valor "+str+" asignado al boton aceptar(modal[aceptar])");
+    $("#aceptar").modal("toggle");
+  }
 
   function accept_n(str){
-                $.post("acceptrequest.php",{str:str},function(str){
-                console.log("Datos cargados "+ str);
-                });
-            }
+    $.post("acceptrequest.php",{str:str},function(str){
+    console.log("Datos cargados "+ str);
+    });
+    }
+
+  function data_modal_cancel(str){
+    console.log("Valor: "+str);
+    $("button[id=b_cancel]").val(str);
+    console.log("Valor "+str+" asignado al boton aceptar(modal[cancelar])");
+    $("#cancelar").modal("toggle");
+  }
+  function cancel_n(str){
+    $.post("cancelrequest.php",{str:str}, function(str){
+      console.log("Datos cargados"+str);
+    });
+  }
+
 
 
 
@@ -470,8 +483,8 @@ function data_modal_accept(str){
     </div>
   </div>
 
-<!-- Negar -->
-  <div id="negar" class="modal fade" role="dialog">
+<!-- Cancelar -->
+  <div id="cancelar" class="modal fade" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header" style="background-color: tomato;">
@@ -484,7 +497,10 @@ function data_modal_accept(str){
         </div>
         <div class="modal-footer">
           <div class="col-xs-5">
-               <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+
+
+<button type="button" class="btn btn-success" id="b_cancel" value="" onclick="cancel_n(this.value); javascript:location.reload()" data-dismiss="modal">Aceptar</button>
+
           </div>
           <div class="col-xs-1"></div>
           <div class="col-xs-5">
