@@ -141,9 +141,9 @@ console.log("Cargada function:\t Tablas Bootstrap3");
             if (isset($aprobar)) {
                 echo '  <td class="text-center" style="width: 65px;"><div class="btn-group btn-group-xs"  style="margin: 13px;">
 
-    <button type="button" value="'.$row['id'].'" name="aceptar"  onclick="data_modal_accept(this.value)" class="btn btn-success" ><span class="glyphicon glyphicon-ok"></button>
+    <button type="button" value="'.$row['id'].'" name="aceptar"         onclick="data_modal_accept(this.value)" class="btn btn-success" ><span class="glyphicon glyphicon-ok"></button>
 
-    <button type="button" value="'.$row['id'].'" name="negar"  onclick="" class="btn btn-danger" ><span class="glyphicon glyphicon-remove"></button></div></td>';
+    <button type="button" value="'.$row['id'].'" name="cancelar"     onclick="data_modal_cancel(this.value)" class="btn btn-danger" ><span class="glyphicon glyphicon-remove"></button></div></td>';
             }
         }
 
@@ -194,12 +194,24 @@ console.log("Cargada function:\t Tablas Bootstrap3");
                 while($row = mysqli_fetch_array($result)){
                 echo "<tr class='small'>";
 
-                    if ($row['approved'] == 1  OR ($row['max_authorized_index'] == $row['max_index'])) {
-                  echo "<td style='background-color: chartreuse'>Aprobado</td>";
-            }
-            else{
-              echo "<td style='background-color: gold'>Esperando</td>";
-            }
+
+if ($row['approved'] == 1  OR ($row['max_authorized_index'] == $row['max_index'])){
+   echo "<td>Aprobado</td>";
+      }
+         else{
+
+                  echo "<td style='background-color: gold'>Esperando</td>";
+                  }
+
+
+
+
+
+
+
+
+
+
 
 
                 echo   "<td class='text-center'>".$row['usercreatedname']."</td>
@@ -301,15 +313,23 @@ console.log("Cargada function:\t Tablas Bootstrap3");
           </thead>
           <tbody id="list_request" >'; 
           while($row = mysqli_fetch_array($viewrow)){
-          echo "<tr class='small'>";
+            echo "<tr class='small'>";
+            
+            $cancel = mysqli_query($connection,"SELECT log.action, log.record FROM log WHERE log.action = 5 AND log.record = ".$row['id']."" );
 
-          if ($row['approved'] == 1  OR ($row['max_authorized_index'] == $row['max_index'])) {
-          echo "<td style='background-color: chartreuse'>Aprobado</td>";
-          }
-          else{
-          echo "<td style='background-color: gold'>Esperando</td>";
-          }
-
+            if ($row['approved'] == 1  OR ($row['max_authorized_index'] == $row['max_index'])) {
+               echo "<td style='background-color: chartreuse'>Aprobado</td>";
+            }
+            /*
+            if ($cancel == true) {
+               echo "<td style='background-color: red'>Cancelado</td>";
+            }
+            */
+            else{
+               echo "<td style='background-color: gold'>Esperando</td>";
+            }
+               
+                
 
           echo   "<td class='text-center' >".$row['usercreatedname']."</td>
           <td class='text-center' >".$row['authorized_group']."</td>

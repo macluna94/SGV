@@ -6,7 +6,7 @@ include "session.php";
 $idrequest =$_POST['str'];
 
 #INSERT INTO `log` VALUES (NULL, 1, 1, :RECORD, :USER, 5, 'Motivos de cancelacion', NOW());
-$log_delete = "INSERT INTO `log` VALUES (NULL, 1, $idrequest, $id_user, 5, 'Cancelado - $idrequest', NOW());";
+$log_delete = "INSERT INTO `log` VALUES (NULL, 1, $idrequest, $id_user, 5, 'Cancelado', NOW());";
 
 if ($link->connect_error){die("Connection failed: ".$link->connect_error);}
 
