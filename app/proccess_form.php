@@ -5,13 +5,11 @@
 <body> 
 <?php
 header('Content-Type: text/html; charset=UTF-8');
-include "php/connection.php";
+include "../php/connection.php";
 
 require_once 'class.inputfilter.php';
 
 $xss = array("'","%","#","+","\"","/","?","*","&","(",")","&&","^","~","`","=","\\","$");
-$filtro = new InputFilter();
-$_POST = $filtro->process($_POST);
 
 
 $id_user = $_POST['id_user'];
@@ -137,7 +135,7 @@ $log="INSERT INTO `log` VALUES (NULL, 1, @ID, $id_user, 0, 'Solicitud creada', N
 		$xml_tmp_name = $_FILES['file-xml']['tmp_name'];
 		$xml_name = $_FILES['file-xml']['name'];
 		$xml_name = str_replace($xss, '', $xml_name);
-	$ruta = 'tmp_folder/';
+	$ruta = '../tmp_folder/';
 
 
 	if ($xml_size == 0) {
@@ -182,7 +180,7 @@ $link = new mysqli('localhost','root','','autos');
 
 	if ($link->multi_query($todo) == TRUE  ) {
 		$link->query($log);
-		header("Location: principal.php?id=$id_user"); 
+		header("Location: ../principal.php?id=$id_user"); 
 	    echo "<script>alert('Solicitud creada');</script>";
 	} else {
 	    echo "Error: " . "<br>" . $link->error;

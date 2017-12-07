@@ -1,7 +1,7 @@
 <?php
 	ob_start();
-	include "session.php";
-	include "php/connection.php";
+	include "../session.php";
+	include "../php/connection.php";
 	$idquest = $_GET['idquest'];
 
 	$queryview = "SELECT requests.*, municipalities.state, drivers.`name` AS driver_name, responsables.`name` AS responsable_name, hubs.caption AS labor_cap, `log`.`user` AS usercreated FROM requests LEFT JOIN users AS drivers ON drivers.id = requests.driver INNER JOIN users AS responsables ON responsables.id = requests.responsable INNER JOIN hubs ON hubs.id = requests.hub LEFT JOIN municipalities ON municipalities.id = requests.municipality INNER JOIN `log` ON `log`.record = requests.id AND `log`.module = 1 AND `log`.action = 0 WHERE requests.id = $idquest";
@@ -56,7 +56,7 @@
 </style>
 -->
 <page backtop="0mm" backbottom="0mm" backleft="10mm" backright="10mm" style="text-align: justify;" >
-	<img src="imgs/udg-norte.jpg" alt="udg-norte">
+	<img src="../imgs/udg-norte.jpg" alt="udg-norte">
 	<p style="font-size: 12px; text-align: justify;"><b>Mtro. Efrain de Jesús Gutiérrez Velázquez <br> Secretario Administrativo del CUNorte</b> <br> P R E S E N T E</p>
 	<p style="font-size: 12px;text-align: justify;" >Por medio del presente escrito me permito saludarlo y a la vez solicitarle, en cumplimiento de nuestra labor de <?php echo $row['labor_cap'],", el vehiculo oficial tipo ", $infot['brand'],"con las placas ",$infot['licenseplates']," para la siguiente salida:"; ?></p>
 	<table style=width: 100%;">
@@ -273,19 +273,17 @@
 
 <?php
 	$content = ob_get_clean();
-	require __DIR__.'/vendor/autoload.php';
+	require '../vendor/autoload.php';
 	use Spipu\Html2Pdf\Html2Pdf;
 	use Spipu\Html2Pdf\Exception\Html2PdfException;
 	use Spipu\Html2Pdf\Exception\ExceptionFormatter;
 	try{
 		$html2pdf = new Html2Pdf('P', 'LETTER', 'es', true,'UTF-8');
 		$html2pdf->pdf->SetDisplayMode('fullpage');
-		//$html2pdf->setModeDebug();
+		#$html2pdf->setModeDebug();
 		$html2pdf->addFont("Times");
-//$html2pdf->addFont("Arial");
-//		$html2pdf->setDefaultFont('Arial');
 		$html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-		$html2pdf->Output('SGV.pdf');
+		$html2pdf->Output('sgv_doc.pdf');
 	}
 	catch(HTML2PDF_exception $e) {
 	echo $e;

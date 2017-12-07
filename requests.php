@@ -1,8 +1,5 @@
 <?php 
-	require_once 'class.inputfilter.php';
 	include "session.php";
-	$filtro = new InputFilter();
-	$_POST = $filtro->process($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include "session.php"; 
+<?php include "../session.php"; 
 $id = $id_user;
 ?>
 <html lang="es" dir="ltr">
@@ -27,11 +27,11 @@ $id = $id_user;
 <?php
 
 	header('Content-Type: text/html; charset=UTF-8');
-	include "php/connection.php";
+	include "../php/connection.php";
 	$idquest = $_GET['idquest'];
 	
-	include "php/querys.php";
-	include "php/settings_date.php";
+	include "../php/querys.php";
+	include "../php/settings_date.php";
 
 
 	$queryview = "SELECT

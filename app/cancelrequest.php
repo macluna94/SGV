@@ -1,6 +1,6 @@
-<?php
-include "php/connection.php";
-include "session.php";
+../<?php
+include "../php/connection.php";
+include "../session.php";
 
 //$id_user -> session.php
 $idrequest =$_POST['str'];

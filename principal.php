@@ -10,11 +10,11 @@
     <script src="js\bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 
 
-<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" charset="utf-8" async defer></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" charset="utf-8" async defer></script>
  
     <script src="js\block_btns.js"></script>
 
@@ -71,7 +71,6 @@ console.log("Cargada function:\t Tablas Bootstrap3");
 
       include "php/connection.php";
       include "php/querys.php";
-      //include "php/perm_btn.php";
 
       $c_id = mysqli_query($connection,"SELECT users.`name` FROM users WHERE users.id = $id");
         $e_id = mysqli_fetch_row($c_id);
@@ -353,10 +352,10 @@ if ($row['approved'] == 1  OR ($row['max_authorized_index'] == $row['max_index']
 
     <script>
         function viewWin(str){
-            v_Win = window.open("viewrequest.php?idquest="+str,"Visualizacion_de_Solicitud","width=900, height=600, centerscreen=yes,location=no,status=no");
+            v_Win = window.open("app/viewrequest.php?idquest="+str,"Visualizacion_de_Solicitud","width=900, height=600, centerscreen=yes,location=no,status=no");
         }
         function editWin(str){
-            e_Win = window.open("editrequest.php?idquest="+str,"Visualizacion_de_Solicitud","width=900, height=600, centerscreen=yes,location=no,status=no");
+            e_Win = window.open("app/editrequest.php?idquest="+str,"Visualizacion_de_Solicitud","width=900, height=600, centerscreen=yes,location=no,status=no");
             console.log("Editar la solicitud: " + str);
         }
         function data_modal_print(str){
@@ -380,14 +379,14 @@ if ($row['approved'] == 1  OR ($row['max_authorized_index'] == $row['max_index']
             function delete_n(str){
             
 
-                $.post("deleterequest.php",{str:str},function(str){
+                $.post("app/deleterequest.php",{str:str},function(str){
                 console.log("Datos cargados "+ str);
                     $(".selected").remove();
                 });
             }
 
         function print_n(str){
-            p_Win = window.open("printrequest.php?idquest="+str,"Visualizacion_de_Solicitud","width=900, height=600, centerscreen=yes,location=no,status=no");
+            p_Win = window.open("app/printrequest.php?idquest="+str,"Visualizacion_de_Solicitud","width=900, height=600, centerscreen=yes,location=no,status=no");
             console.log("Solicitud: "+str+ " impresa");
         }
 
@@ -400,7 +399,7 @@ if ($row['approved'] == 1  OR ($row['max_authorized_index'] == $row['max_index']
   }
 
   function accept_n(str){
-    $.post("acceptrequest.php",{str:str},function(str){
+    $.post("app/acceptrequest.php",{str:str},function(str){
     console.log("Datos cargados "+ str);
     });
     }
@@ -412,7 +411,7 @@ if ($row['approved'] == 1  OR ($row['max_authorized_index'] == $row['max_index']
     $("#cancelar").modal("toggle");
   }
   function cancel_n(str){
-    $.post("cancelrequest.php",{str:str}, function(str){
+    $.post("app/cancelrequest.php",{str:str}, function(str){
       console.log("Datos cargados"+str);
     });
   }
