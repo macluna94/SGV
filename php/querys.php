@@ -1,6 +1,6 @@
 <?php header('Content-Type: text/html; charset=UTF-8');
 
-include "php/connection.php";
+include "connection.php";
 
 
 

@@ -280,7 +280,6 @@
 	try{
 		$html2pdf = new Html2Pdf('P', 'LETTER', 'es', true,'UTF-8');
 		$html2pdf->pdf->SetDisplayMode('fullpage');
-		#$html2pdf->setModeDebug();
 		$html2pdf->addFont("Times");
 		$html2pdf->writeHTML($content, isset($_GET['vuehtml']));
 		$html2pdf->Output('sgv_doc.pdf');

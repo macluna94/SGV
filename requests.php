@@ -463,7 +463,7 @@
 					<div class="col-xs-2"></div>
 					<div class="col-xs-2"></div>
 					<div class="col-xs-2"></div>
-					<div class="col-xs-2">
+					<div class="col-xs-2"> 
 						<button type="submit" id="enviar" class="btn btn-success" disabled="true" onclick="mio()" >Enviar Solicitud</button>
 					</div>
 				</div>
