@@ -76,6 +76,7 @@
 
 			<script ="select_auto">
 				function auto(val){
+					console.log("seleccionar");
 					var val;
 					var id_car =$(val).val();
 					var marca = $("td[id=b" + id_car +"]").text();
@@ -93,6 +94,25 @@
 					console.log("Funcion mio() \t Ejecutada");
 					console.log("Id auto: "+ auto);
 				}
+			</script>
+			<script type="text/javascript" id="asistentes_function">
+				$(document).ready(function(){
+					$("#agreg_asist").click(function(){
+						var vvv = $("#name").val();
+						var www = $("#code").val();
+
+						if (vvv != "" && www != "") {
+							$("#list_asist").append("<tr><td id='name' >" + $("#name").val()+ "</td>"+"<td id='code'>" + $("#code").val() + "</td><td aling='center' style='width: 80px;padding-left: 20px;'><button type='button' class='btn btn-danger btn-sm' onclick='borrarAsist(this);'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
+							$("#name").val("");
+							$("#code").val("");
+						}
+						else{}
+					});
+				});
+					function borrarAsist(str) {
+						var j = str.parentNode.parentNode.rowIndex;
+						document.getElementById("list_asist").deleteRow(j-1);
+					}
 			</script>
 		</head>
 		<body>
@@ -235,8 +255,9 @@
 								</div>
 									<input id="transporte" type="hidden" name="transporte" value="" required>		
 								<div class="panel-body">
-									<button  type="button" id="start" data-toggle="modal" class="btn btn-success"  data-target="#myModal"  value="MacLuna" ><span class="glyphicon glyphicon-road"></span>   Seleccionar
-									</button>
+								<button  type="button" id="start" data-toggle="modal" class="btn btn-success"  data-target="#myModal"  value="MacLuna" >
+								<span class="glyphicon glyphicon-road"></span>   Seleccionar
+							</button>
 									<br>
 									<br>
 									<table class="table table-bordered">
@@ -250,7 +271,7 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td style="width: 68px;"> <img src="imgs/auto.png" width="32px" height="32px" style="margin-left: 8px;"> </td>
+												<td style="width: 68px;"> <img src="../imgs/auto.png" width="32px" height="32px" style="margin-left: 8px;"> </td>
 												<td id="bb" style="text-align: center;" ></td>
 												<td id="tb" style="text-align: center;" ></td>
 												<td id="pb" style="text-align: center;" ></td>
@@ -331,9 +352,7 @@
 
 							<div class="panel panel-default" id="asistentes-panel">
 								<div class="panel-heading">
-									<h4>
-										<strong>Relación de personas a transportar.</strong>
-									</h4>
+									<h4> <strong>Relación de personas a transportar.</strong></h4>
 								</div>
 								<div class="panel-body">
 									<div class="form-group row">
@@ -342,28 +361,55 @@
 											<h4 class="text-center"><strong> Lista de Asistentes </strong></h4>
 										</div>
 										<div class="col-xs-4"></div>
+										<div class="col-xs-12">
+											<span class="label label-warning">No incluya chofer ni responsable </span>
+										</div>
 									</div>
+
+
+
+
 									<div class="form-group row">
-										<?php 
-											$query_list = "SELECT * FROM request_passengers WHERE request = $idquest";
-											$Tlist = mysqli_query($connection, $query_list);
-											if (mysqli_num_rows($Tlist) != 0) {
-												$i = 1;
-												echo "<div class='fluid-container'><table class='table table-bordered'><thead><tr class='info'><th class='text-center'>#</th><th>Nombre</th><th>Codigo</th></tr></thead><tbody>";
-												while ($list = mysqli_fetch_array($Tlist)){
-													echo "<tr><td class='text-center'>".$i."</td><td>".$list['name']."</td><td>".$list['code']."</td></tr>";
-													$i++;
-												}
-												echo "</tbody></table> </div>";
-											}
-											else{
-												echo '<div class="alert alert-warning text-center"><strong>No hay lista de asistentes.</strong></div>';
-											}
-										?>	
+										<div class="col-xs-5">
+											<label>Nombre</label>
+										</div>
+										<div class="col-xs-3">
+											<label>Codigo</label>	
+										</div>
+										<div class="col-xs-4"></div>			
+										<div class="col-xs-5">	
+											<input type="text" id="name" name="nombre" pattern="[A-Z-a-z-' ']+" class="form-control" placeholder="Ingrese nombre completo">
+										</div>				
+										<div class="col-xs-4">	
+											<input type="text" id="code" name="codigo" pattern="[A-Z-a-z-' ']+" class="form-control" placeholder="Codigo o indetificador">
+										</div>
+										
+										<div class="col-xs-2">
+											<button type="button" id="agreg_asist" class="btn btn-default" >Agregar</button>
+										</div>
+									</div>
+									<div>
+
+										
+										<input id="id_user" type="hidden" name="id_user" value="<?php echo $id; ?>">
+									</div>
+									<div class="table-responsive">
+										<table id="list_nombres" class="table table-bordered">
+											<thead>
+												<tr class="info">
+													<th>Nombre:</th>
+													<th>Codigo:</th>
+													<th class="center"></th>
+												</tr>
+											</thead>
+											<tbody id="list_asist"></tbody>
+										</table>
 									</div>
 								</div>
 							</div>
-
+					<input type="text" id="nombres" name="nombres" >
+					<input type="text" id="codigos" name="codigos" >
+					<input type="hidden" id="idquest" name="idquest" value="<?php echo $idquest; ?>">
 							<div class="panel panel-default" id="gastos-panel">
 								<div class="panel-heading">	
 									<h4>
@@ -394,8 +440,7 @@
 								</div>
 							</div>
 
-							<input type="hidden" id="nombres" name="nombres"  >
-							<input type="hidden" id="codigos" name="codigos"  >
+
 						</div>
 					</div>		
 					<div class="panel-footer">
@@ -412,9 +457,9 @@
 							</div>
 						</div>
 					</div>
+
 				</form>
 
-				<input type="text" name="idquest" value="<?php echo $idquest; ?>">
 
 			<script type="text/javascript">
 				var state = false;
@@ -422,6 +467,19 @@
 					state = true;
 					$("button[id=enviar]").attr("disabled", false);
 				});
+				function mio(){
+			var valores="";
+			var codigos="";
+			$("td").parents("tr").find("#name").each(function(){
+				valores+=$(this).html()+"_";
+			});
+			$("td").parents("tr").find("#code").each(function(){
+				codigos+=$(this).html()+"_";
+			});
+
+			$("#codigos").val(codigos);
+			$("#nombres").val(valores);
+		}
 			</script>
 		</body>
 
@@ -439,36 +497,29 @@
 						<div class="table-responsive">
 							<?php 
 								$autos = mysqli_query($connection,$query_car) or die ("Error de conexion");
-								echo "<table id='myTable' class='table table-condensed' >
-									<thead>
-									<tr class='active'>
-									<th class='text-center'></th>
-									<th class='text-center'>Marca</th>
-									<th class='text-center'>Modelo</th>
-									<th class='text-center'>Pasajeros</th>
-									<th class='text-center'></th>
-									</tr>
-									</thead>
-									<tbody>";
-								while($row = mysqli_fetch_array($autos)) {
-									echo "<tr id='tabs'>";
+								echo '
+								<table class="table table-striped">
+								<thead>
+									<th></th>
+									<th>Marca</th>
+									<th>Tipo</th>
+									<th>Capacidad</th>
+									<th></th>
+								</thead>
+									<tbody>';
+									while($list = mysqli_fetch_array($autos)) {
+										echo '<tr id="tabs">
 
-									echo '<td><input type="hidden" value="'.$row['id'].'" name="auto_id" for="solicitud"  style="width:40px;height:40px" disabled></td>';
-									echo "<td class='text-center' >" . $row['brand_cap'] . "</td>";
-									echo "<td class='text-center' >" . $row['type_cap'] . "</td>";
-									echo "<td class='text-center' >" . $row['passengercapacity'] . "</td>";
-									echo '  <td id="btn-s">
-									<input type="button" value="Seleccionar" class="addcar btn btn-info" data-dismiss="modal" />
-									</td>
+										<td><input type="hidden" value="'.$list['id'].'" id="s_car"></td>
+										<td class="text-center"  id="b'.$list['id'].'"  >' . $list["brand_cap"] . '</td>
+										<td class="text-center"  id="t'.$list['id'].'"  >' . $list["type_cap"] . '</td>
+										<td class="text-center"  id="p'.$list['id'].'"  >' . $list["passengercapacity"] . '</td>
+										<td><button type="button" class="btn btn-success"  value="'.$list['id'].'" onclick="auto(this);"  data-dismiss="modal" >Seleccionar</button></td>
+										</tr>';
+									}
+									echo "</tbody></table>
 
-									</tr>';
-								}
-									mysqli_close($connection);
-									echo "
-									</tbody>
-									</table>
-
-										";
+									";
 							?>
 						</div>
 					</div>
