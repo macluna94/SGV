@@ -68,7 +68,7 @@ $programas = array("Lic. en Administración","Lic. en Agronegocios","Lic. en Ant
 	<div class="container">
 		
 		<div class="panel-group">
-			<div class="panel panel-warning" id="motivos-panel">
+			<div class="panel panel-primary" id="motivos-panel">
 				<div class="panel-heading">	
 					<h4><label class="control-label">Instituciones a visitar o Actividades a realizar</label></h4>
 				</div>
@@ -82,7 +82,7 @@ $programas = array("Lic. en Administración","Lic. en Agronegocios","Lic. en Ant
 				</div>
 			</div>
 
-			<div class="panel panel-info" id="itinerario-panel">
+			<div class="panel panel-primary" id="itinerario-panel">
 				<div class="panel-heading">
 					<h4> <label class="control-label">Itinerario</label></h4>
 				</div>
@@ -219,7 +219,7 @@ $programas = array("Lic. en Administración","Lic. en Agronegocios","Lic. en Ant
 				</div>
 			</div>
 
-			<div class="panel panel-danger" id="asistentes">
+			<div class="panel panel-primary" id="asistentes">
 				<div class="panel-heading">
 					<h4>
 						<label class="control-label">
@@ -266,7 +266,7 @@ $programas = array("Lic. en Administración","Lic. en Agronegocios","Lic. en Ant
 				</div>
 			</div>
 
-			<div class="panel panel-default" id="costos">
+			<div class="panel panel-primary" id="costos">
 				
 				<div class="panel-heading">
 					<h4><label class="label-control">Compromisos de pago del solicitante al chofer</label></h4>
@@ -296,7 +296,7 @@ $programas = array("Lic. en Administración","Lic. en Agronegocios","Lic. en Ant
 				</div>
 			</div>
 
-<div class="panel panel-warning" id="docs">
+<div class="panel panel-primary" id="docs">
 <div class="panel-heading">
 	<h4>
 		<label class="label-control">
